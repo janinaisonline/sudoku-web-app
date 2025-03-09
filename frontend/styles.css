@@ -1,0 +1,14 @@
+body {
+    background-color: linen;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  h1 {
+    color: black;
+    font-size: 54px;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 20px;
+  }
