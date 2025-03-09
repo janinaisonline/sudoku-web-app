@@ -11,8 +11,7 @@ COPY . .
 RUN dotnet publish -c Release -o /app/publish
 
 # Runtime Stage: Use a smaller runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime  # Keep it the same version as the SDK
-WORKDIR /app
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime 
 COPY --from=build /app/publish .
 
 # Expose the app on port 5099
