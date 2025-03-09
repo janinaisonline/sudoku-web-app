@@ -14,6 +14,9 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime 
 COPY --from=build /app/publish .
 
+# Set .NET to listen on port 5099
+ENV ASPNETCORE_URLS=http://+:5099
+
 # Expose the app on port 5099
 EXPOSE 5099
 
