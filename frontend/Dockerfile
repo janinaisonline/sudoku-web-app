@@ -1,19 +1,14 @@
-# Use Node.js to build the frontend
-FROM node:18-alpine AS build
-WORKDIR /app
-
-# Copy package.json and install dependencies
-COPY package.json ./
-RUN npm install
-
-# Copy the rest of the frontend code and build it
-COPY . .
-RUN npm run build
-
-# Use Nginx to serve the built frontend
+# Use an official Nginx image
 FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose port 80 for web traffic
+# Remove default Nginx web files
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy frontend files into the container
+COPY . /usr/share/nginx/html
+
+# Expose port 80 for serving the frontend
 EXPOSE 80
+
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
