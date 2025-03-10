@@ -28,7 +28,7 @@ How to get everything up and running with Docker and Kubernetes (minikube):
         minikube service frontend-service --url
 
     When making changes to the frontend page:
-        docker build -t janinah/sudoku-web-app-frontend . (from frontend folder) // docker build -t janinah/sudoku-web-app-frontend ./frontend (from main folder)
+        docker build -t janinah/sudoku-web-app-frontend ./frontend (from main folder) // docker build -t janinah/sudoku-web-app-frontend . (from frontend folder)
         docker push janinah/sudoku-web-app-frontend
 
         # force to pull latest
@@ -36,7 +36,7 @@ How to get everything up and running with Docker and Kubernetes (minikube):
 
         # or delete and reapply
         kubectl delete deployment frontend
-        kubectl apply -f frontend-deployment.yaml (from K8S folder) // kubectl apply -f K8S/frontend-deployment.yaml (from main folder)
+        kubectl apply -f K8S/frontend-deployment.yaml (from main folder) // kubectl apply -f frontend-deployment.yaml (from K8S folder) // 
 
         kubectl get pods
         kubectl get services
@@ -45,12 +45,17 @@ How to get everything up and running with Docker and Kubernetes (minikube):
     To deploy globally (via ACR):
         docker tag sudoku-web-app-frontend acrsudoku.azurecr.io/sudoku-web-app-frontend:latest
         docker push acrsudoku.azurecr.io/sudoku-web-app-frontend:latest
-        
+
         kubectl apply -f K8S/frontend-deployment.yaml
         kubectl rollout restart deployment frontend
 
         kubectl get pods
         kubectl get services
+
+    To run locally (through Docker):
+        docker build -t sudoku-web-app-frontend ./frontend  //  docker-compose up --build (to build frontend and backend)
+        docker run -d -p 3000:80 sudoku-web-app-frontend
+
 
 
 
