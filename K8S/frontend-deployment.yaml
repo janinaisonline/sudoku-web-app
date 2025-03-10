@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: janinah/sudoku-web-app-frontend
+        image: acrsudoku.azurecr.io/sudoku-web-app-frontend:latest # previously: janinah/sudoku-web-app-frontend (docker hub)
         ports:
         - containerPort: 80

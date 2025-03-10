@@ -1,14 +1,14 @@
 version: "3.8"
 services:
   backend:
-    build: ./sudoku
+    build: ../sudoku
     ports:
       - "5099:5099"
     environment:
       - ASPNETCORE_URLS=http://+:5099  # Ensure .NET listens on port 5099
 
   frontend:
-    build: ./frontend
+    build: ../frontend
     ports:
       - "3000:80"
     volumes:

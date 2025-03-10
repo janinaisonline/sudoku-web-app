@@ -9,4 +9,4 @@ spec:
     - protocol: TCP
       port: 80  # The service port
       targetPort: 80  # The container's port
-  type: NodePort  # Allows external access
+  type: LoadBalancer
