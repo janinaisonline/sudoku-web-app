@@ -3,15 +3,25 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 
 # Copy project file and restore dependencies
-COPY SudokuApp/*.csproj .
+COPY SudokuApp/*.csproj ./SudokuApp/
+WORKDIR /app/SudokuApp
 RUN dotnet restore
 
-# Copy all source files and build
+# # Copy all source files and build
+# COPY . .
+# # RUN dotnet publish -c Release -o /app/publish
+# RUN dotnet publish -c Release -o /app/publish --no-restore
+
+# Copy all source files, EXCEPT bin/ and obj/
 COPY . .
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet clean
+RUN rm -rf /app/SudokuApp/bin /app/SudokuApp/obj  # 🔹 Ensures old build files are removed
+RUN dotnet publish -c Release -o /app/publish --no-restore
+
 
 # Runtime Stage: Use a smaller runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime 
+WORKDIR /app
 COPY --from=build /app/publish .
 
 # Set .NET to listen on port 5099
