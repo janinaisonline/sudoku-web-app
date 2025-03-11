@@ -15,7 +15,7 @@ How to get everything up and running on Azure with Docker and Kubernetes:
         az login (if not logged in yet)
         az acr login --name acrsudoku (to log into the ACR)
 
-        # First command builds the updated page, second command "renames" (tags) the page with the acr name, third command pushes the new version to acr
+        # First command builds the updated page and names it sudoku-web-app-frontend, second command "renames" (tags) the page with the acr name, third command pushes the new version to acr
         docker build -t sudoku-web-app-frontend ./frontend 
         docker tag sudoku-web-app-frontend acrsudoku.azurecr.io/sudoku-web-app-frontend:latest 
         docker push acrsudoku.azurecr.io/sudoku-web-app-frontend:latest
@@ -41,7 +41,7 @@ How to get everything up and running on Azure with Docker and Kubernetes:
     ###########################################################################
     NOT RECENT ANYMORE
     ###########################################################################
-    
+
     Locally with minikube:
 
         minikube start
