@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj": {}
+    "E:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj": {}
   },
   "projects": {
-    "e:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj": {
+    "E:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj",
+        "projectUniqueName": "E:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj",
         "projectName": "SudokuApp",
-        "projectPath": "e:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj",
+        "projectPath": "E:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj",
         "packagesPath": "C:\\Users\\janin\\.nuget\\packages\\",
-        "outputPath": "e:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\obj\\",
+        "outputPath": "E:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\janin\\AppData\\Roaming\\NuGet\\NuGet.Config"
