@@ -79,6 +79,11 @@ How to get everything up and running on Azure with Docker and Kubernetes:
         kubectl get services
         minikube service frontend-service --url
 
+
+To clean up docker:
+    docker images prune
+    docker system prune
+
     
 
 
