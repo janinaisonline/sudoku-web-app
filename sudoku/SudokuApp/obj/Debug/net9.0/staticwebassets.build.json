@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "5jZedeNST5rOTt6Wl4i/moLtXu+ttyryfNvXCzhNUss=",
+  "Source": "SudokuApp",
+  "BasePath": "_content/SudokuApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
