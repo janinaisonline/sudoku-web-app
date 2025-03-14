@@ -30,3 +30,5 @@ E:\dev\sudoku-web-app\sudoku\SudokuApp\obj\Debug\net9.0\refint\SudokuApp.dll
 E:\dev\sudoku-web-app\sudoku\SudokuApp\obj\Debug\net9.0\SudokuApp.pdb
 E:\dev\sudoku-web-app\sudoku\SudokuApp\obj\Debug\net9.0\SudokuApp.genruntimeconfig.cache
 E:\dev\sudoku-web-app\sudoku\SudokuApp\obj\Debug\net9.0\ref\SudokuApp.dll
+E:\dev\sudoku-web-app\sudoku\SudokuApp\obj\Debug\net9.0\SudokuApp.AssemblyInfoInputs.cache
+E:\dev\sudoku-web-app\sudoku\SudokuApp\obj\Debug\net9.0\SudokuApp.AssemblyInfo.cs
