@@ -6,6 +6,8 @@ button {
     border-radius: 8px;
     padding: 10px 20px;
     text-align: center;
+    /* font-size: 18px;
+    font-weight: bold; */
 }
 
 button:hover {
@@ -19,4 +21,25 @@ button:active {
 .sudoku-game {
     text-align: center; 
     margin-top: 20px;
+}
+
+.difficulty-container {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    /* align-items: center; /* Align buttons vertically */
+    gap: 10px;
+}
+
+button.difficulty-level {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: normal;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: rgb(255, 209, 194);
+    cursor: pointer;
+}
+
+.difficulty-level:hover {
+    background-color: rgb(250, 175, 146);
 }

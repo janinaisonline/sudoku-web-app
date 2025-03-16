@@ -1,6 +1,23 @@
 import { useState, useEffect } from "react";
 import "./SudokuGrid.css";
 
+
+// function SudokuGrid({ grid }) {
+//     return (
+//         <div className="sudoku-grid">
+//             {grid.map((row, rowIndex) => (
+//                 <div key={rowIndex} className="sudoku-row">
+//                     {row.map((cell, colIndex) => (
+//                         <div key={colIndex} className="sudoku-cell">
+//                             {cell !== 0 ? cell : ""}
+//                         </div>
+//                     ))}
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// }
+
 const SudokuGrid = () => {
     const [grid, setGrid] = useState([]);
 
