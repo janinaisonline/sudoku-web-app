@@ -1,0 +1,22 @@
+button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: rgb(255, 209, 194);
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: rgb(250, 175, 146);
+}
+
+button:active {
+    background-color: rgb(250, 175, 146);
+}
+
+.sudoku-game {
+    text-align: center; 
+    margin-top: 20px;
+}
