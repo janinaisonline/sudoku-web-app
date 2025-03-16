@@ -51,30 +51,3 @@ namespace SudokuApp.Controllers
         }
     }
 }
-
-
-// using Microsoft.AspNetCore.Mvc;
-// using SudokuApp.SudokuFunctionality;
-
-// namespace SudokuApp.Controllers
-// {
-//     [ApiController]
-//     [Route("api/sudoku")]
-//     public class SudokuController : ControllerBase
-//     {
-//         private readonly SudokuGenerator _sudokuGenerator;
-
-//         public SudokuController()
-//         {
-//             _sudokuGenerator = new SudokuGenerator();
-//         }
-
-//         [HttpGet("generate")]
-//         public IActionResult GenerateSudoku()
-//         {
-//             var puzzle = _sudokuGenerator.GeneratePuzzle();
-//             _sudokuGenerator.FillPuzzle(puzzle);
-//             return Ok(new { grid = puzzle });
-//         }
-//     }
-// }
