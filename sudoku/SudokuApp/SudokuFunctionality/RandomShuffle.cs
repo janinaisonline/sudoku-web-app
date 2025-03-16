@@ -1,3 +1,5 @@
+namespace SudokuApp.SudokuFunctionality;
+
 public class RandomShuffle
 {
     public static void ShuffleArray(int[] array)

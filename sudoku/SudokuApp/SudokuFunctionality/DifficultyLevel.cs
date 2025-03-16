@@ -1,6 +1,4 @@
-using SudokuApp.SudokuFunctionality;
-
-namespace SudokuApp.Difficulty;
+namespace SudokuApp.SudokuFunctionality;
 
 public class DifficultyLevel
 {

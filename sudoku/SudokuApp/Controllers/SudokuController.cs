@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using SudokuApp.SudokuFunctionality;
-using System.Collections.Generic;  // required for List<T>
-
 namespace SudokuApp.Controllers
 {
     [ApiController]
@@ -9,10 +5,12 @@ namespace SudokuApp.Controllers
     public class SudokuController : ControllerBase
     {
         private readonly SudokuGenerator _sudokuGenerator;
+        private readonly DifficultyLevel _difficultyLevel;
 
         public SudokuController()
         {
             _sudokuGenerator = new SudokuGenerator();
+            _difficultyLevel = new DifficultyLevel();
         }
 
         [HttpGet] // this makes localhost:5099/api/sudoku return something
@@ -21,7 +19,7 @@ namespace SudokuApp.Controllers
             return Ok(new { message = "Welcome to the Sudoku API! Use /api/sudoku/generate to get a puzzle." });
         }
 
-        [HttpGet("generate")] // so when localhost:5099/api/sudoku/generate is called, the following code gets executed and a sudoku is generated
+        [HttpGet("generate")] // when localhost:5099/api/sudoku/generate is called, the following code gets executed and a sudoku is generated
         public IActionResult GenerateSudoku()
         {
             var puzzle = _sudokuGenerator.GeneratePuzzle();
@@ -31,6 +29,24 @@ namespace SudokuApp.Controllers
             var convertedGrid = ConvertToList(puzzle);
 
             return Ok(new { grid = convertedGrid });
+        }
+
+        [HttpGet("easy")]
+        public IActionResult GetEasySudoku()
+        {
+            return Ok(new {grid = ConvertToList(_difficultyLevel.EasyPuzzle())});
+        }
+
+        [HttpGet("medium")]
+        public IActionResult GetMediumSudoku()
+        {
+            return Ok(new {grid = ConvertToList(_difficultyLevel.MediumPuzzle())});
+        }
+
+        [HttpGet("hard")]
+        public IActionResult GetHardSudoku()
+        {
+            return Ok(new {grid = ConvertToList(_difficultyLevel.HardPuzzle())});
         }
 
         // helper function to convert 2D array to List<List<int>>

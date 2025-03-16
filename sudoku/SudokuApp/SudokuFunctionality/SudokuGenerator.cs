@@ -3,16 +3,16 @@ namespace SudokuApp.SudokuFunctionality;
 public class SudokuGenerator
 {
     private Random rand = new Random();
-
     int[] allNumbers = {1, 2, 3, 4, 5, 6, 7, 8, 9}; // array with numbers from 1 to 9
+    private int[,] puzzle = new int[9, 9];
 
-    public int[,] GeneratePuzzle()
+    public int[,] GeneratePuzzle() // generates an empty grid
     {
-        var puzzle = new int[9, 9];
-
-        return puzzle;
+        FillPuzzle(puzzle);
+        return (int[,])puzzle.Clone();
     }
 
+    // fills the empty grid with valid entries
     public bool FillPuzzle(int[,] puzzle, int row = 0, int col = 0) // row and col initialised with 0 if not passed on (for the first call)
     {
         // move to the next row when reaching the end of a column (when the function is called on a column bigger than 8)
