@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import "./SudokuGrid.css";
 
-const SudokuGrid = () => {
+const SudokuGrid = ({ difficulty }) => {
     const [grid, setGrid] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5099/api/sudoku/generate")
+
+        const endpoint = `http://localhost:5099/api/sudoku/${difficulty}`;
+
+        fetch(endpoint)
             .then(response => response.json())
             .then(data => setGrid(data.grid))
-            .catch(error => console.error("Error fetching Sudoku:", error));
-    }, []);
+            .catch(error => console.error("Error fetching Sudoku", error));
+    }, [difficulty]);
 
     return (
         <div className="sudoku-container">
