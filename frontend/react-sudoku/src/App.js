@@ -18,6 +18,7 @@ function SudokuGame() {
     return (
         <div className="sudoku-game">
             <h1>Sudoku Player</h1>
+            <p>Current difficulty: {difficulty}</p>
             <SudokuGrid key={key} difficulty={difficulty} />
             <button onClick={regenerateSudoku}>Generate new sudoku</button>
             <div className="difficulty-container">
