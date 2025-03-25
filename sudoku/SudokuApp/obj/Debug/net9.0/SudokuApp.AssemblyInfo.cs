@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SudokuApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3df8fe370cef10950ea7146549dcf1a2325ea4cc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71217cc67ee3098db4f90e49b383e679092d9440")]
 [assembly: System.Reflection.AssemblyProductAttribute("SudokuApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SudokuApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
