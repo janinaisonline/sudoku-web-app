@@ -43,3 +43,20 @@ button.difficulty-level {
 .difficulty-level:hover {
     background-color: rgb(250, 175, 146);
 }
+
+.sudoku-numbers {
+    margin: 10px 0px 15px;
+}
+
+button.number-button {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+
+    margin: 0px 1px;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 8px 12px;
+    text-align: center;
+}
