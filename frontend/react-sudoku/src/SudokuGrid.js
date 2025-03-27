@@ -91,6 +91,8 @@ const SudokuGrid = ({ difficulty }) => {
         var count = 0;
 
         for (let r = 0; r < 9; r++) {
+            if (!userGrid[r] || userGrid[r].length !== 9) continue; // added safety (for when the grid hasn't rendered yet)
+
             for (let c = 0; c < 9; c++) {
                 if (userGrid[r][c] === num) count++;
             }
