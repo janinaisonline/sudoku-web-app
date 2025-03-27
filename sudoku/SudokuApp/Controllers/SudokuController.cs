@@ -34,19 +34,25 @@ namespace SudokuApp.Controllers
         [HttpGet("easy")]
         public IActionResult GetEasySudoku()
         {
-            return Ok(new {grid = ConvertToList(_difficultyLevel.EasyPuzzle())});
+            var convertedGrid = ConvertToList(_difficultyLevel.EasyPuzzle());
+            
+            return Ok(new {grid = convertedGrid});
         }
 
         [HttpGet("medium")]
         public IActionResult GetMediumSudoku()
         {
-            return Ok(new {grid = ConvertToList(_difficultyLevel.MediumPuzzle())});
+            var convertedGrid = ConvertToList(_difficultyLevel.MediumPuzzle());
+            
+            return Ok(new {grid = convertedGrid});
         }
 
         [HttpGet("hard")]
         public IActionResult GetHardSudoku()
         {
-            return Ok(new {grid = ConvertToList(_difficultyLevel.HardPuzzle())});
+            var convertedGrid = ConvertToList(_difficultyLevel.HardPuzzle());
+            
+            return Ok(new {grid = convertedGrid});
         }
 
         // helper function to convert 2D array to List<List<int>>
