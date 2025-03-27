@@ -3,6 +3,7 @@ import "./SudokuGrid.css";
 
 const SudokuGrid = ({ difficulty }) => {
     const [grid, setGrid] = useState([]);
+    const [selectedCell, setSelectedCell] = useState(null); // { row: x, col: y }
 
     useEffect(() => {
 
@@ -25,32 +26,31 @@ const SudokuGrid = ({ difficulty }) => {
                         const isBottomBorder = rowIndex === 8;
                         const isRightBorder = colIndex === 8;
 
+                        const isSelected =
+                            selectedCell?.row === rowIndex &&
+                            selectedCell?.col === colIndex;
+
                         const cellStyle = {
                             borderTop: isTopBorder ? "2px solid black" : "1px solid black",
                             borderLeft: isLeftBorder ? "2px solid black" : "1px solid black",
                             borderRight: isRightBorder ? "2px solid black" : "",
                             borderBottom: isBottomBorder ? "2px solid black" : "",
-                        };
+                        };                      
 
                         return (
                             <div
                                 key={`${rowIndex}-${colIndex}`}
-                                className={`sudoku-cell ${num === 0 ? "empty" : ""}`}
+                                className={`sudoku-cell ${num === 0 ? "empty" : ""} ${isSelected ? "selected" : ""}`}                            
                                 style={cellStyle}
+                                onClick={() => {
+                                    if (num === 0) setSelectedCell({ row: rowIndex, col: colIndex });
+                                }}
                             >
                                 {num !== 0 ? num : ""}
                             </div>
                         );
                     })
                 )}
-                {/* {grid.flat().map((num, index) => (
-                    <div
-                        key={index}
-                        className={`sudoku-cell ${num === 0 ? "empty" : ""}`}
-                    >
-                        {num !== 0 ? num : ""}
-                    </div>
-                ))} */}
             </div>
         </div>
     );
