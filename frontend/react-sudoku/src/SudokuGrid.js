@@ -43,8 +43,18 @@ const SudokuGrid = ({ difficulty }) => {
                                 className={`sudoku-cell ${num === 0 ? "empty" : ""} ${isSelected ? "selected" : ""}`}                            
                                 style={cellStyle}
                                 onClick={() => {
-                                    if (num === 0) setSelectedCell({ row: rowIndex, col: colIndex });
+                                    if (num === 0 && !isSelected) setSelectedCell({ row: rowIndex, col: colIndex })
+                                    else setSelectedCell(null);
                                 }}
+                                // onClick={() => {
+                                //     if (num !== 0) return; // don't do anything if the cell isn't editable
+                                
+                                //     if (!isSelected) {
+                                //         setSelectedCell({ row: rowIndex, col: colIndex }); // select the cell
+                                //     } else {
+                                //         setSelectedCell(null); // deselect if already selected
+                                //     }
+                                // }}
                             >
                                 {num !== 0 ? num : ""}
                             </div>
