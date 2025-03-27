@@ -1,16 +1,13 @@
 # sudoku-web-app
-Starting out to build a sudoku web application
 
+### Deploy on Azure with Docker and Kubernetes
 
-How to get everything up and running on Azure with Docker and Kubernetes:
+Start __docker desktop__ manually
 
-    Start docker desktop manually
-
-    To deploy globally (via ACR):
-
-        IP address: http://135.234.181.198/
-
-        # Need to be logged in to Azure and ACR first
+To deploy globally (via ACR):
+Public IP address: http://135.234.181.198/
+´´´
+# Need to be logged in to Azure and ACR first
         az account show (to check if already logged in)
         az login (if not logged in yet)
         az acr login --name acrsudoku (to log into the ACR)
@@ -29,13 +26,14 @@ How to get everything up and running on Azure with Docker and Kubernetes:
         # For information about pods and web addresses
         kubectl get pods
         kubectl get services
+´´´
 
-    To run locally (through Docker):
-
-        Local IP address: http://localhost:3000/
-        
-        docker build -t sudoku-web-app-frontend ./frontend  //  docker-compose up --build (to build frontend and backend)
-        docker run -d -p 3000:80 sudoku-web-app-frontend
+To deploy locally (through Docker):
+Local IP address: http://localhost:3000/
+´´´
+docker build -t sudoku-web-app-frontend ./frontend  //  docker-compose up --build (to build frontend and backend)
+docker run -d -p 3000:80 sudoku-web-app-frontend
+´´´
 
 
     ###########################################################################
@@ -81,9 +79,10 @@ How to get everything up and running on Azure with Docker and Kubernetes:
 
 
 To clean up docker:
-    docker images prune
-    docker system prune
-
+´´´
+docker images prune
+docker system prune
+´´´
     
 
 
