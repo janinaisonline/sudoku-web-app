@@ -19,13 +19,6 @@ function SudokuGame() {
         <div className="sudoku-game">
             <h1>Sudoku Player</h1>
             <p>Difficulty level: {difficulty}</p>
-            <div className="sudoku-numbers">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
-                    <button key={number} className="number-button">
-                        {number}
-                    </button>
-                ))}
-            </div>
             <SudokuGrid key={key} difficulty={difficulty} />
             <button onClick={regenerateSudoku}>Generate new sudoku</button>
             <div className="difficulty-container">

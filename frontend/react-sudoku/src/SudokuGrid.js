@@ -79,7 +79,7 @@ const SudokuGrid = ({ difficulty }) => {
             for (let c = 0; c < 3; c++) {
                 const currRow = boxStartRow + r;
                 const currCol = boxStartCol + c;
-                
+
                 if ((currRow !== row || currCol !== col) && userGrid[currRow][currCol] === value) return true;
             }
         }
@@ -87,61 +87,86 @@ const SudokuGrid = ({ difficulty }) => {
         return false;
     };
 
+    const numberFilled = (num) => {
+        var count = 0;
+
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                if (userGrid[r][c] === num) count++;
+            }
+        }
+
+        if (count === 9) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     return (
-        <div className="sudoku-container">
-            <div className="sudoku-grid">
-            {userGrid.map((row, rowIndex) =>
-                    row.map((num, colIndex) => {
-                        // determine border thickness based on 3x3 grid layout
-                        const isTopBorder = rowIndex % 3 === 0;
-                        const isLeftBorder = colIndex % 3 === 0;
-                        const isBottomBorder = rowIndex === 8;
-                        const isRightBorder = colIndex === 8;
+        <div>
+            <div className="sudoku-numbers">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
+                    <button key={number} className={`number-button ${numberFilled(number) ? "complete" : ""}`}>
+                        {number}
+                    </button>
+                ))}
+            </div>
+            <div className="sudoku-container">
+                <div className="sudoku-grid">
+                {userGrid.map((row, rowIndex) =>
+                        row.map((num, colIndex) => {
+                            // determine border thickness based on 3x3 grid layout
+                            const isTopBorder = rowIndex % 3 === 0;
+                            const isLeftBorder = colIndex % 3 === 0;
+                            const isBottomBorder = rowIndex === 8;
+                            const isRightBorder = colIndex === 8;
 
-                        const isSelected =
-                            selectedCell?.row === rowIndex &&
-                            selectedCell?.col === colIndex;
+                            const isSelected =
+                                selectedCell?.row === rowIndex &&
+                                selectedCell?.col === colIndex;
 
-                        const cellStyle = {
-                            borderTop: isTopBorder ? "2px solid black" : "1px solid black",
-                            borderLeft: isLeftBorder ? "2px solid black" : "1px solid black",
-                            borderRight: isRightBorder ? "2px solid black" : "",
-                            borderBottom: isBottomBorder ? "2px solid black" : "",
-                        };                      
+                            const cellStyle = {
+                                borderTop: isTopBorder ? "2px solid black" : "1px solid black",
+                                borderLeft: isLeftBorder ? "2px solid black" : "1px solid black",
+                                borderRight: isRightBorder ? "2px solid black" : "",
+                                borderBottom: isBottomBorder ? "2px solid black" : "",
+                            };                      
 
-                        return (
-                            <div
-                                key={`${rowIndex}-${colIndex}`}
-                                className={`sudoku-cell
-                                    ${grid[rowIndex][colIndex] === 0 ? "user-cell" : "prefilled-cell"} 
-                                    ${num === 0 ? "empty" : ""} 
-                                    ${isSelected ? "selected" : ""}
-                                    ${isCellInvalid(rowIndex, colIndex) ? "error" : ""}
-                                `}                            
-                                style={cellStyle}
-                                onClick={() => {
-                                    if (grid[rowIndex][colIndex] === 0 && !isSelected) {
-                                        setSelectedCell({ row: rowIndex, col: colIndex })
-                                    } else {
-                                        setSelectedCell(null);
-                                    }
-                                }}
-                                // alternative way for the function
-                                // onClick={() => {
-                                //     if (num !== 0) return; // don't do anything if the cell isn't editable
-                                
-                                //     if (!isSelected) {
-                                //         setSelectedCell({ row: rowIndex, col: colIndex }); // select the cell
-                                //     } else {
-                                //         setSelectedCell(null); // deselect if already selected
-                                //     }
-                                // }}
-                            >
-                                {num !== 0 ? num : ""}
-                            </div>
-                        );
-                    })
-                )}
+                            return (
+                                <div
+                                    key={`${rowIndex}-${colIndex}`}
+                                    className={`sudoku-cell
+                                        ${grid[rowIndex][colIndex] === 0 ? "user-cell" : "prefilled-cell"} 
+                                        ${num === 0 ? "empty" : ""} 
+                                        ${isSelected ? "selected" : ""}
+                                        ${isCellInvalid(rowIndex, colIndex) ? "error" : ""}
+                                    `}                            
+                                    style={cellStyle}
+                                    onClick={() => {
+                                        if (grid[rowIndex][colIndex] === 0 && !isSelected) {
+                                            setSelectedCell({ row: rowIndex, col: colIndex })
+                                        } else {
+                                            setSelectedCell(null);
+                                        }
+                                    }}
+                                    // alternative way for the function
+                                    // onClick={() => {
+                                    //     if (num !== 0) return; // don't do anything if the cell isn't editable
+                                    
+                                    //     if (!isSelected) {
+                                    //         setSelectedCell({ row: rowIndex, col: colIndex }); // select the cell
+                                    //     } else {
+                                    //         setSelectedCell(null); // deselect if already selected
+                                    //     }
+                                    // }}
+                                >
+                                    {num !== 0 ? num : ""}
+                                </div>
+                            );
+                        })
+                    )}
+                </div>
             </div>
         </div>
     );
