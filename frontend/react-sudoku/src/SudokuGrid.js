@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import "./SudokuGrid.css";
 
 const SudokuGrid = ({ difficulty }) => {
-    const [grid, setGrid] = useState([]);
-    const [selectedCell, setSelectedCell] = useState(null); // { row: x, col: y }
+    const [grid, setGrid] = useState([]); // constant version fetched from backend
+    const [selectedCell, setSelectedCell] = useState(null); // { row: x, col: y }, selectedCell.row, selectedCell.col, both "undefined" by default
+    const [userGrid, setUserGrid] = useState([]); // editable version for user interaction
 
     useEffect(() => {
 
@@ -11,14 +12,55 @@ const SudokuGrid = ({ difficulty }) => {
 
         fetch(endpoint)
             .then(response => response.json())
-            .then(data => setGrid(data.grid))
+            .then(data => {
+                setGrid(data.grid);
+                setUserGrid(data.grid);
+            })
             .catch(error => console.error("Error fetching Sudoku", error));
     }, [difficulty]);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (!selectedCell) return;
+
+            const key = e.key;
+
+            // allow only digits 1 to 9
+            if (/^[1-9]$/.test(key)) {
+                const row = selectedCell.row;
+                const col = selectedCell.col;
+
+                // don't allow editing prefilled cells (check grid not userGrid)
+                if (grid[row][col] !== 0) return;
+                
+                const updatedGrid = userGrid.map(r => [...r]); // deep copy
+                updatedGrid[row][col] = parseInt(key);
+                setUserGrid(updatedGrid);
+            }
+
+            // allow backspace or delete to clear cell
+            if (key === 'Backspace' || key === 'Delete') {
+                const row = selectedCell.row;
+                const col = selectedCell.col;
+
+                if (grid[row][col] !== 0) return;
+
+                const updatedGrid = userGrid.map(r => [...r]);
+                updatedGrid[row][col] = 0;
+                setUserGrid(updatedGrid);
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [selectedCell, userGrid, grid]);
 
     return (
         <div className="sudoku-container">
             <div className="sudoku-grid">
-            {grid.map((row, rowIndex) =>
+            {userGrid.map((row, rowIndex) =>
                     row.map((num, colIndex) => {
                         // determine border thickness based on 3x3 grid layout
                         const isTopBorder = rowIndex % 3 === 0;
@@ -40,12 +82,20 @@ const SudokuGrid = ({ difficulty }) => {
                         return (
                             <div
                                 key={`${rowIndex}-${colIndex}`}
-                                className={`sudoku-cell ${num === 0 ? "empty" : ""} ${isSelected ? "selected" : ""}`}                            
+                                className={`sudoku-cell
+                                    ${grid[rowIndex][colIndex] === 0 ? "user-cell" : "prefilled-cell"} 
+                                    ${num === 0 ? "empty" : ""} 
+                                    ${isSelected ? "selected" : ""}
+                                `}                            
                                 style={cellStyle}
                                 onClick={() => {
-                                    if (num === 0 && !isSelected) setSelectedCell({ row: rowIndex, col: colIndex })
-                                    else setSelectedCell(null);
+                                    if (grid[rowIndex][colIndex] === 0 && !isSelected) {
+                                        setSelectedCell({ row: rowIndex, col: colIndex })
+                                    } else {
+                                        setSelectedCell(null);
+                                    }
                                 }}
+                                // alternative way for the function
                                 // onClick={() => {
                                 //     if (num !== 0) return; // don't do anything if the cell isn't editable
                                 
