@@ -4,8 +4,8 @@
 
 Start __docker desktop__ manually
 
+Public IP address: http://135.234.181.198/ <br/>
 To deploy globally (via ACR):
-Public IP address: http://135.234.181.198/
 ```
 // Need to be logged in to Azure and ACR first
 az account show (to check if already logged in)
@@ -28,8 +28,8 @@ kubectl get pods
 kubectl get services
 ```
 
+Local IP address: http://localhost:3000/ <br/>
 To deploy locally (through Docker):
-Local IP address: http://localhost:3000/
 ```
 docker build -t sudoku-web-app-frontend ./frontend  //  docker-compose up --build (to build frontend and backend)
 docker run -d -p 3000:80 sudoku-web-app-frontend
