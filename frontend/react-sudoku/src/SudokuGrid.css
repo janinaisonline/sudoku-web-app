@@ -34,9 +34,14 @@
 }
 
 .sudoku-cell.user-cell {
+    background-color: #f0f0f0;
     color: #1a78d6;
 }
 
 .sudoku-cell.prefilled-cell {
     color: black;
+}
+
+.sudoku-cell.error {
+    color: red;
 }

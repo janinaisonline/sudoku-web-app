@@ -57,6 +57,36 @@ const SudokuGrid = ({ difficulty }) => {
         };
     }, [selectedCell, userGrid, grid]);
 
+    const isCellInvalid = (row, col) => {
+        const value = userGrid[row][col];
+        if (value === 0) return false;
+
+        // check row
+        for (let c = 0; c < 9; c++) {
+            if (c !== col && userGrid[row][c] === value) return true;
+        }
+
+        // check col
+        for (let r = 0; r < 9; r++) {
+            if (r !== row && userGrid[r][col] === value) return true;
+        }
+
+        // check 3x3 box
+        const boxStartRow = Math.floor(row / 3) * 3;
+        const boxStartCol = Math.floor(col / 3) * 3;
+
+        for (let r = 0; r < 3; r++) {
+            for (let c = 0; c < 3; c++) {
+                const currRow = boxStartRow + r;
+                const currCol = boxStartCol + c;
+                
+                if ((currRow !== row || currCol !== col) && userGrid[currRow][currCol] === value) return true;
+            }
+        }
+
+        return false;
+    };
+
     return (
         <div className="sudoku-container">
             <div className="sudoku-grid">
@@ -86,6 +116,7 @@ const SudokuGrid = ({ difficulty }) => {
                                     ${grid[rowIndex][colIndex] === 0 ? "user-cell" : "prefilled-cell"} 
                                     ${num === 0 ? "empty" : ""} 
                                     ${isSelected ? "selected" : ""}
+                                    ${isCellInvalid(rowIndex, colIndex) ? "error" : ""}
                                 `}                            
                                 style={cellStyle}
                                 onClick={() => {
