@@ -1,80 +1,28 @@
+.sudoku-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; /* space between grid and number pad */
+}
+
 .sudoku-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    /* align-items: center;
-    height: 100vh; */
-}
-
-.sudoku-grid {
-    display: grid;
-    grid-template-columns: repeat(9, 40px);
-    /* gap: 2px; */
-}
-
-.sudoku-cell {
-    width: 40px;
-    height: 40px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    /* border: 1px solid black; */
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #FAF9F6;
-    box-sizing: border-box;
+    
 }
 
-.sudoku-cell.empty {
-    background-color: #f0f0f0;
-}
-
-.sudoku-cell.selected {
-    background-color: #cce5ff;
-    box-shadow: inset 0 0 0 2px #3399ff;
-}
-
-.sudoku-cell.user-cell {
-    background-color: #f0f0f0;
-    color: #1a78d6;
-    /* color: #8EA4D2; */
-}
-
-.sudoku-cell.user-cell.selected {
-    background-color: #cce5ff;
-}
-
-.sudoku-cell.prefilled-cell {
-    color: black;
-}
-
-.sudoku-cell.error {
-    color: red;
-}
-
-.sudoku-numbers {
-    margin: 10px 0px 15px;
-}
-
-button.number-button {
-    background-color: #FAF9F6;
-    color: black;
-    font-weight: bold;
+.difficulty-label {
+    margin-bottom: 8px;
     font-size: 16px;
-
-    margin: 0px 1px;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 8px 12px;
+    font-weight: bold;
     text-align: center;
 }
 
-button.number-button.complete {
-    background-color: rgb(204, 204, 204);
-    background-color: #f0f0f0;
-    /* text-decoration: line-through solid black 2px; */
-    color: rgb(107, 107, 107);
-}
-
-button.number-button.complete:hover {
-    background-color: rgb(204, 204, 204);
+.stopwatch {
+    margin-top: 10px;
+    align-self: flex-start; /* ← this left-aligns it inside the container */
+    font-size: 16px;
+    font-weight: bold;
 }

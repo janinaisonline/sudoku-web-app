@@ -1,0 +1,38 @@
+.sudoku-numbers {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 40px;
+    gap: 5px;
+}
+
+.number-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #FAF9F6;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.number-button.complete {
+    background-color: #bbbbbb;
+    color: #6b6b6b;
+    cursor: default;
+}
+
+.number-button.complete:hover {
+    background-color: rgb(204, 204, 204);
+}
+
+.number-button.del-button {
+    grid-column: span 3; /* makes it span all 3 columns in the grid */
+    width: 100%;         /* fill the space */
+}

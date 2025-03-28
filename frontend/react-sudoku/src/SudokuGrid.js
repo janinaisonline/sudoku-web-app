@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./SudokuGrid.css";
+import "./css-imports.js";
 
 // SudokuGrid re-renders whenever its state changes (e.g. when setGrid or selectedCell is called) or when its props change (in App.js such as {difficulty})
 
@@ -131,83 +132,89 @@ const SudokuGrid = ({ difficulty }) => {
     // return value of SudokuGrid()
     return (
         <div>
-            <div className="stopwatch">
-                Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}
-            </div>
-            <div className="sudoku-numbers">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 'DEL'].map((number) => (
-                    <button key={number} 
-                            className={`number-button ${numberFilled(number) ? "complete" : ""}`}
-                            disabled={numberFilled(number)}
-                            onClick={() => {
-                                if (!selectedCell) return;
-                                
-                                const row = selectedCell.row;
-                                const col = selectedCell.col;
+            <div className="sudoku-wrapper">
+                <div className="sudoku-container">
+                    <p className="difficulty-label">Difficulty level: {difficulty}</p>
 
-                                if (grid[row][col] !== 0) return;
+                    <div className="sudoku-grid">
+                        {userGrid.map((row, rowIndex) =>
+                                row.map((num, colIndex) => {
+                                    // determine border thickness based on 3x3 grid layout
+                                    const isTopBorder = rowIndex % 3 === 0;
+                                    const isLeftBorder = colIndex % 3 === 0;
+                                    const isBottomBorder = rowIndex === 8;
+                                    const isRightBorder = colIndex === 8;
 
-                                const updatedGrid = userGrid.map(r => [...r]);
+                                    const isSelected =
+                                        selectedCell?.row === rowIndex &&
+                                        selectedCell?.col === colIndex;
 
-                                if (number === 'DEL') {
-                                    updatedGrid[row][col] = 0;
-                                } else {
-                                    updatedGrid[row][col] = number;
-                                }
+                                    const cellStyle = {
+                                        borderTop: isTopBorder ? "2px solid black" : "1px solid black",
+                                        borderLeft: isLeftBorder ? "2px solid black" : "1px solid black",
+                                        borderRight: isRightBorder ? "2px solid black" : "",
+                                        borderBottom: isBottomBorder ? "2px solid black" : "",
+                                    };                      
 
-                                setUserGrid(updatedGrid);
-                            }}
-                    >
-                        {number}
-                    </button>
-                ))}
-            </div>
-            <div className="sudoku-container">
-                <div className="sudoku-grid">
-                {userGrid.map((row, rowIndex) =>
-                        row.map((num, colIndex) => {
-                            // determine border thickness based on 3x3 grid layout
-                            const isTopBorder = rowIndex % 3 === 0;
-                            const isLeftBorder = colIndex % 3 === 0;
-                            const isBottomBorder = rowIndex === 8;
-                            const isRightBorder = colIndex === 8;
+                                    return (
+                                        <div
+                                            key={`${rowIndex}-${colIndex}`}
+                                            className={`sudoku-cell
+                                                ${grid[rowIndex][colIndex] === 0 ? "user-cell" : "prefilled-cell"} 
+                                                ${num === 0 ? "empty" : ""} 
+                                                ${isSelected ? "selected" : ""}
+                                                ${isCellInvalid(rowIndex, colIndex) ? "error" : ""}
+                                            `}                            
+                                            style={cellStyle}
+                                            onClick={() => {
+                                                if (grid[rowIndex][colIndex] !== 0) return; // if cell is not prefilled, it can be selected
 
-                            const isSelected =
-                                selectedCell?.row === rowIndex &&
-                                selectedCell?.col === colIndex;
+                                                if (!isSelected) { 
+                                                    setSelectedCell({ row: rowIndex, col: colIndex }) // select the cell
+                                                } else {
+                                                    setSelectedCell(null); // deselect if already selected
+                                                }
+                                            }}
+                                        >
+                                            {num !== 0 ? num : ""}
+                                        </div>
+                                    );
+                                })
+                            )}
+                    </div>
 
-                            const cellStyle = {
-                                borderTop: isTopBorder ? "2px solid black" : "1px solid black",
-                                borderLeft: isLeftBorder ? "2px solid black" : "1px solid black",
-                                borderRight: isRightBorder ? "2px solid black" : "",
-                                borderBottom: isBottomBorder ? "2px solid black" : "",
-                            };                      
+                    <div className="stopwatch">
+                        Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}
+                    </div>
+                </div>
 
-                            return (
-                                <div
-                                    key={`${rowIndex}-${colIndex}`}
-                                    className={`sudoku-cell
-                                        ${grid[rowIndex][colIndex] === 0 ? "user-cell" : "prefilled-cell"} 
-                                        ${num === 0 ? "empty" : ""} 
-                                        ${isSelected ? "selected" : ""}
-                                        ${isCellInvalid(rowIndex, colIndex) ? "error" : ""}
-                                    `}                            
-                                    style={cellStyle}
+                <div className="sudoku-numbers">
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 'DEL'].map((number) => (
+                            <button key={number} 
+                                    className={`number-button ${numberFilled(number) ? "complete" : ""} ${number === 'DEL' ? "del-button" : ""}`}
+                                    disabled={numberFilled(number)}
                                     onClick={() => {
-                                        if (grid[rowIndex][colIndex] !== 0) return; // if cell is not prefilled, it can be selected
+                                        if (!selectedCell) return;
+                                        
+                                        const row = selectedCell.row;
+                                        const col = selectedCell.col;
 
-                                        if (!isSelected) { 
-                                            setSelectedCell({ row: rowIndex, col: colIndex }) // select the cell
+                                        if (grid[row][col] !== 0) return;
+
+                                        const updatedGrid = userGrid.map(r => [...r]);
+
+                                        if (number === 'DEL') {
+                                            updatedGrid[row][col] = 0;
                                         } else {
-                                            setSelectedCell(null); // deselect if already selected
+                                            updatedGrid[row][col] = number;
                                         }
+
+                                        setUserGrid(updatedGrid);
                                     }}
-                                >
-                                    {num !== 0 ? num : ""}
-                                </div>
-                            );
-                        })
-                    )}
+                            >
+                                {number}
+                            </button>
+                        ))}
                 </div>
             </div>
         </div>

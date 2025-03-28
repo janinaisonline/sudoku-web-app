@@ -1,40 +1,30 @@
-button {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    background-color: #FAF9F6;
-    color: black;
-    border: 1px solid black;
-    border-radius: 8px;
-    padding: 10px 20px;
-    text-align: center;
-    /* font-size: 18px;
-    font-weight: bold; */
-}
-
-button:hover {
-    background-color: #EFB0A1;
-}
-
-button:active {
-    background-color: #EFB0A1;
-}
-
 .sudoku-game {
     text-align: center; 
     margin-top: 20px;
 }
+/* 
+.update-buttons {
+    display: flex;
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+} */
+
+.regenerate-button {
+    grid-row: span 1;
+}
 
 .difficulty-container {
+    grid-row: span 1;
     display: flex;
     justify-content: center; /* Center buttons horizontally */
     /* align-items: center; /* Align buttons vertically */
     gap: 10px;
 }
 
-button.difficulty-level {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: normal;
+.difficulty-level {
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: bold;
     border: 1px solid black;
     border-radius: 8px;
     cursor: pointer;

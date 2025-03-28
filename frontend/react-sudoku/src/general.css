@@ -1,0 +1,30 @@
+body {
+    background-color: #D4DFC7;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+  
+h1 {
+    font-size: 72px;
+    text-align: center;
+}
+
+button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #FAF9F6;
+    color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-align: center;
+    /* font-size: 18px;
+    font-weight: bold; */
+}
+
+button:hover {
+    background-color: #EFB0A1;
+}
+
+button:active {
+    background-color: #EFB0A1;
+}
