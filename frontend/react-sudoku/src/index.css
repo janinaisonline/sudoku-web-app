@@ -1,5 +1,15 @@
+/* Color palette:
+--melon: #EFB0A1;
+--french-blue: #1A78D6;
+--columbia-blue: #CCE5FF;
+--beige: #D4DFC7;
+--hunter-green: #3F6C51; 
+--offwhite: #FAF9F6;
+--light-grey: #f0f0f0; */
+
+
 body {
-  background-color: linen;
+  background-color: #D4DFC7;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 }
 

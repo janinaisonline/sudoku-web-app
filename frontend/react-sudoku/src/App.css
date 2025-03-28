@@ -1,7 +1,8 @@
 button {
     margin-top: 20px;
     margin-bottom: 10px;
-    background-color: rgb(255, 209, 194);
+    background-color: #FAF9F6;
+    color: black;
     border: 1px solid black;
     border-radius: 8px;
     padding: 10px 20px;
@@ -11,11 +12,11 @@ button {
 }
 
 button:hover {
-    background-color: rgb(250, 175, 146);
+    background-color: #EFB0A1;
 }
 
 button:active {
-    background-color: rgb(250, 175, 146);
+    background-color: #EFB0A1;
 }
 
 .sudoku-game {
@@ -36,10 +37,5 @@ button.difficulty-level {
     font-weight: normal;
     border: 1px solid black;
     border-radius: 8px;
-    background-color: rgb(255, 209, 194);
     cursor: pointer;
-}
-
-.difficulty-level:hover {
-    background-color: rgb(250, 175, 146);
 }
