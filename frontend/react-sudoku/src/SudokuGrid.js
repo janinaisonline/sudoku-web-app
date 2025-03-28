@@ -8,6 +8,10 @@ const SudokuGrid = ({ difficulty }) => {
     const [userGrid, setUserGrid] = useState([]); // editable version for user interaction (2d array)
     const [selectedCell, setSelectedCell] = useState(null); // { row: x, col: y }, selectedCell.row, selectedCell.col, both "undefined" by default
 
+    // timer variables
+    const [seconds, setSeconds] = useState(0);
+    const [timerActive, setTimerActive] = useState(false);
+
     // fetch sudoku grid from API
     useEffect(() => {
 
@@ -20,7 +24,22 @@ const SudokuGrid = ({ difficulty }) => {
                 setUserGrid(data.grid);
             })
             .catch(error => console.error("Error fetching Sudoku", error));
+
+        setTimerActive(true);
     }, [difficulty]); // this useEffect function is called when the difficulty changes
+
+    // start timer
+    useEffect(() => {
+        let interval;
+
+        if (timerActive) {
+            interval = setInterval(() => {
+                setSeconds(prev => prev + 1);
+            }, 1000);
+        }
+
+        return () => clearInterval(interval);
+    }, [timerActive]);
 
     // handle keyboard clicks
     useEffect(() => {
@@ -112,6 +131,9 @@ const SudokuGrid = ({ difficulty }) => {
     // return value of SudokuGrid()
     return (
         <div>
+            <div className="stopwatch">
+                Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}
+            </div>
             <div className="sudoku-numbers">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 'DEL'].map((number) => (
                     <button key={number} 
