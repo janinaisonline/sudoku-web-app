@@ -9,16 +9,12 @@ h1 {
 }
 
 button {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    background-color: #FAF9F6;
     color: black;
+    background-color: #FAF9F6;
     border: 1px solid black;
     border-radius: 8px;
     padding: 10px 20px;
     text-align: center;
-    /* font-size: 18px;
-    font-weight: bold; */
 }
 
 button:hover {
