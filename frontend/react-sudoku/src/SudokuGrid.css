@@ -8,7 +8,6 @@
 .sudoku-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     
 }
@@ -17,12 +16,11 @@
     margin-bottom: 8px;
     font-size: 16px;
     font-weight: bold;
-    text-align: center;
 }
 
 .stopwatch {
     margin-top: 10px;
-    align-self: flex-start; /* ← this left-aligns it inside the container */
+    align-self: flex-start; /* this left-aligns the timer element inside the container */
     font-size: 16px;
     font-weight: bold;
 }
