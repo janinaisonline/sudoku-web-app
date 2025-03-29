@@ -2,15 +2,14 @@
     text-align: center; 
     margin-top: 20px;
 }
-/* 
-.update-buttons {
-    display: flex;
-    grid-template-rows: repeat(2, 1fr);
-    justify-content: center;
-} */
 
-.regenerate-button {
-    grid-row: span 1;
+.update-buttons {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .difficulty-container {
@@ -22,10 +21,16 @@
 }
 
 .difficulty-level {
-    padding: 10px 12px;
+    padding: 10px 15px;
     font-size: 14px;
     font-weight: bold;
     border: 1px solid black;
     border-radius: 8px;
     cursor: pointer;
+}
+
+.regenerate-button {
+    padding: 10px 10px;
+    font-size: 14px;
+    font-weight: bold;
 }
