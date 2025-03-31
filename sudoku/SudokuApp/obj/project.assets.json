@@ -80,11 +80,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj",
+      "projectUniqueName": "E:\\dev\\sudoku-project-folder\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj",
       "projectName": "SudokuApp",
-      "projectPath": "E:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj",
+      "projectPath": "E:\\dev\\sudoku-project-folder\\sudoku-web-app\\sudoku\\SudokuApp\\SudokuApp.csproj",
       "packagesPath": "C:\\Users\\janin\\.nuget\\packages\\",
-      "outputPath": "E:\\dev\\sudoku-web-app\\sudoku\\SudokuApp\\obj\\",
+      "outputPath": "E:\\dev\\sudoku-project-folder\\sudoku-web-app\\sudoku\\SudokuApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\janin\\AppData\\Roaming\\NuGet\\NuGet.Config"
