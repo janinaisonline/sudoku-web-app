@@ -122,7 +122,7 @@ const SudokuGrid = ({ difficulty }) => {
             }
         }
 
-        if (count === 9) { // disables button when the number is already nine times on the grid
+        if (count >= 9) { // disables button when the number is already nine times on the grid
             return true;
         } else {
             return false;
